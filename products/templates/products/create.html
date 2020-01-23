@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<b> {{error}} </b>
+
+<br/>
+<br/>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+    
+            <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+
+                {% csrf_token %} 
+                
+                <h1 class="h3 mb-3 font-weight-normal">Please enter product info</h1>
+                <br/>
+
+                <input type="text" name="title" class="form-control" placeholder="Title" required autofocus>
+                <br/>
+                
+                
+                <textarea rows="10" cols="45" name="body" style="min-height: 100px"placeholder="Description" class="form-control"></textarea>
+                
+                <br/>
+
+                <input type="url" name="url" class="form-control" placeholder="Url" required>
+                <br/>
+                
+                <b>Icon: </b><input type="file" name="icon" placeholder="Icon" required>
+                <br/>
+                <br/>
+                
+                
+                <b>Image: </b><input type="file" name="image"  placeholder="Image" required> 
+                <br/>
+
+                <br />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Add Product</button>
+
+            </form>
+        </div>
+    
+    </div>
+    
+</div>
+
+{% endblock %}
